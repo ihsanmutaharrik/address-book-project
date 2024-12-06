@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address Book</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <!-- Header Logo Start -->
+    <header class="bg-white absolute w-full top-0 left-0 flex items-center justify-center shadow-xl z-10">
+        <div class="container px-16">
+            <div class="flex items-center justify-center">
+                <div class="py-6">
+                    <a href="#Home">
+                        <img class="h-20 inline" src="img/logo.png" alt="logo">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Logo End -->
+
+    <!-- Section Form Start -->
+    <section id="Home" class="pt-36 bg-White flex items-center justify-center">
+        <div class="container px-16">
+            <div class="w-full px-4">
+                <div class="max-w-xl mx-auto text-center mb-12">
+                    <h2 class="font-bold text-3xl mb-4">Dcontact</h2>
+                    <p class="font-medium text-md text-zinc-500">Help you stay connected with your contacts</p>
+                </div>
+            </div>
+            
+            <!-- Form Details Start -->
+            <form action="">
+                <!-- Name & Email -->
+                <div class="w-full mx-auto flex items-center justify-center mb-8">
+                    <div class="w-full px-4">
+                        <label for="Name">Name</label>
+                        <input type="text" id="name" class="w-full bg-slate-100  p-3 rounded-lg focus: outline-none focus:ring-black focus:ring-1">
+                    </div>
+                    <div class="w-full px-4">
+                        <label for="Email">Email</label>
+                        <input type="text" id="Email" class="w-full bg-slate-100  p-3 rounded-lg focus: outline-none focus:ring-black focus:ring-1">
+                    </div>
+                </div>
+                <!-- Phone & Company -->
+                <div class="w-full mx-auto flex items-center justify-center mb-8">
+                    <div class="w-full px-4">
+                        <label for="Phone">Phone</label>
+                        <input type="tel" id="phone" class="w-full bg-slate-100  p-3 rounded-lg focus: outline-none focus:ring-black focus:ring-1" placeholder="0000-0000-0000" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}">
+                    </div>
+                    <div class="w-full px-4">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" class="w-full bg-slate-100  p-3 rounded-lg focus: outline-none focus:ring-black focus:ring-1">
+                    </div>
+                </div>
+            </form>
+            <!-- Form Details End -->
+        </div>
+
+    </section>
+    <!-- Section Form End -->
+</body>
+</html>
