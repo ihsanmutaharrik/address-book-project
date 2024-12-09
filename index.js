@@ -22,15 +22,13 @@ const contacts = [
   },
 ];
 
-
 // Create function task day 11
-let index;
-function showContact(){
-  for (index = 0; index < 3;index++){
+function showContacts() {
+  for (let index = 0; index < contacts.length; index++) {
     const tempContact = contacts[index];
-    const outputContact = `${tempContact.name} (${tempContact.phone}) ${tempContact.email} ${tempContact.company}`
+    const outputContact = `${tempContact.name} (${tempContact.phone}) ${tempContact.email} ${tempContact.company}`;
     console.log(outputContact);
   }
 }
 
-showContact()
+showContacts();
