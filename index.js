@@ -1,4 +1,4 @@
-let contacts = [
+const contacts = [
   {
     id: 1,
     name: "Muhammad Haidar Hanif",
@@ -22,4 +22,15 @@ let contacts = [
   },
 ];
 
-console.log({ contacts });
+
+// Create function task day 11
+let index;
+function showContact(){
+  for (index = 0; index < 3;index++){
+    const tempContact = contacts[index];
+    const outputContact = `${tempContact.name} (${tempContact.phone}) ${tempContact.email} ${tempContact.company}`
+    console.log(outputContact);
+  }
+}
+
+showContact()
