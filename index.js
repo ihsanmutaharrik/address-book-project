@@ -26,7 +26,7 @@ function showContacts() {
     const outputContact = `ID : ${index + 1} ${tempContact.name} (${
       tempContact.phone
     }) ${tempContact.email} ${tempContact.company}`;
-    alert(outputContact);
+    console.log(outputContact);
   }
 }
 
@@ -40,9 +40,22 @@ function testAddContact() {
   contacts.push(testContact);
 }
 
+function testDeleteContact() {
+  const testDeleteContact = {
+    name: "Raul Gonzales",
+    email: "gonzalesraul@gmail.com",
+    phone: "0877-7772-7771",
+    company: "Real Madrid Company",
+  };
+  contacts.pop(contacts);
+}
 
 function showMenu() {
-  let choice = prompt("1. Test Show Contact\n" + "2. Test Add Contact");
+  let choice = prompt(
+    "1. Test Show Contact\n" +
+      "2. Test Add Contact\n" +
+      " 3. Test Delete Contact"
+  );
 
   switch (choice) {
     case "1":
@@ -52,7 +65,10 @@ function showMenu() {
       testAddContact();
       showContacts();
       break;
+    case "3":
+      testDeleteContact();
+      showContacts();
   }
 }
 
-showMenu()
+showMenu();
