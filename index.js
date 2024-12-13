@@ -4,18 +4,21 @@ const contacts = [
     email: "haidar@bearmentor.com",
     phone: "0881-8881-8881",
     company: "Bearmentor Group",
+    year: new Date(1990, 1, 2),
   },
   {
     name: "Isyana Sarasvati",
     email: "Isyana@gmail.com",
     phone: "0882-8882-8882",
     company: "Redrose Recording",
+    year: new Date(1993, 9, 20),
   },
   {
     name: "Raul Gonzales",
     email: "gonzalesraul@gmail.com",
     phone: "0877-7772-7771",
     company: "Real Madrid Company",
+    year: new Date(1987, 3, 4),
   },
 ];
 
@@ -25,7 +28,7 @@ function showContacts() {
     const tempContact = contacts[index];
     const outputContact = `ID : ${index + 1} ${tempContact.name} (${
       tempContact.phone
-    }) ${tempContact.email} ${tempContact.company}`;
+    }) ${tempContact.email} ${tempContact.company} ${tempContact.birthday.getFullYear()}`;
     console.log(outputContact);
   }
 }
@@ -36,6 +39,7 @@ function testAddContact() {
     email: "Cristianoronaldo@gmail.com",
     phone: "0877-7654-3210",
     company: "Al Nassr Company",
+    birthday: new Date(1985, 8, 7),
   };
   contacts.push(testContact);
 }
