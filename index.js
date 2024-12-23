@@ -22,62 +22,21 @@ let dataContacts = [
   },
 ];
 
-// function renderContacts
+const contactsListElement = document.getElementById("contacts-list");
+
 function renderContacts(contacts) {
-  contacts.forEach((contact, index) => {
-    console.log(`
-      ID : ${contact.id}
-      Name: ${contact.name}
-      Email: ${contact.email}
-      Phone: ${contact.phone}
-      Company: ${contact.company}`);
+  contacts.forEach((contact) => {
+    const contactLiElement = document.createElement("li");
+
+    contactLiElement.innerHTML = `
+    <h1>${contact.name}</h1>
+    <p>${contact.email}</p>
+    <p>${contact.phone}</p>
+    <p>${contact.company}</p>
+    `;
+
+    contactsListElement.appendChild(contactLiElement);
   });
 }
 
-// function searchContacts
-function searchContacts(contacts, searchTerm) {
-  const searchedContacts = contacts.filter((contact) => {
-    return contact.name
-      .toLocaleLowerCase()
-      .includes(searchTerm.toLocaleLowerCase());
-  });
-
-  renderContacts(searchedContacts);
-}
-
-// function generateId
-function generateId(contacts) {
-  return contacts[contacts.length - 1].id + 1;
-}
-
-// function addContact
-function addContact(contacts, newContactInput) {
-  const newContact = {
-    id: generateId(contacts),
-    ...newContactInput,
-  };
-
-  const newContacts = [...contacts, newContact];
-
-  renderContacts(newContacts);
-}
-
-// function deleteContact
-function deleteContact(contacts, contactId) {
-  const filteredContacts = contacts.filter((contact) => {
-    return contact.id !== contactId;
-  });
-
-  dataContacts = filteredContacts;
-  renderContacts(dataContacts);
-}
-
-// renderContacts(dataContacts);
-// searchContacts(dataContacts, "Ha");
-// addContact(dataContacts, {
-//   name: "Emma Watson",
-//   email: "Emma@watson.com",
-//   phone: "0871-7711-1111",
-//   company: "Hogwarts Group",
-// });
-// deleteContact(dataContacts, 1);
+renderContacts(dataContacts);
