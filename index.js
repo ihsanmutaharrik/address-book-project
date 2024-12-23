@@ -1,78 +1,72 @@
-const contacts = [
+let dataContacts = [
   {
+    id: 1,
     name: "Muhammad Haidar Hanif",
     email: "haidar@bearmentor.com",
     phone: "0881-8881-8881",
     company: "Bearmentor Group",
-    birthday: new Date(1990, 1, 2),
   },
   {
+    id: 2,
     name: "Isyana Sarasvati",
     email: "Isyana@gmail.com",
     phone: "0882-8882-8882",
     company: "Redrose Recording",
-    birthday: new Date(1993, 9, 20),
   },
   {
+    id: 3,
     name: "Raul Gonzales",
     email: "gonzalesraul@gmail.com",
     phone: "0877-7772-7771",
     company: "Real Madrid Company",
-    birthday: new Date(1987, 3, 4),
   },
 ];
 
-// Create function task day 11
-function showContacts() {
-  for (let index = 0; index < contacts.length; index++) {
-    const tempContact = contacts[index];
-    const outputContact = `ID : ${index + 1} ${tempContact.name} (${
-      tempContact.phone
-    }) ${tempContact.email} ${tempContact.company} ${tempContact.birthday.getFullYear()}`;
-    console.log(outputContact);
-  }
+// function renderContacts
+function renderContacts(contacts) {
+  contacts.forEach((contact, index) => {
+    console.log(`
+      ID : ${contact.id}
+      Name: ${contact.name}
+      Email: ${contact.email}
+      Phone: ${contact.phone}
+      Company: ${contact.company}`);
+  });
 }
 
-function testAddContact() {
-  const testContact = {
-    name: "Cristiano Ronaldo",
-    email: "Cristianoronaldo@gmail.com",
-    phone: "0877-7654-3210",
-    company: "Al Nassr Company",
-    birthday: new Date(1985, 8, 7),
+// function searchContacts
+function searchContacts(contacts, searchTerm) {
+  const searchedContacts = contacts.filter((contact) => {
+    return contact.name
+      .toLocaleLowerCase()
+      .includes(searchTerm.toLocaleLowerCase());
+  });
+
+  renderContacts(searchedContacts);
+}
+
+// function generateId
+function generateId(contacts) {
+  return contacts[contacts.length - 1].id + 1;
+}
+
+// function addContact
+function addContact(contacts, newContactInput) {
+  const newContact = {
+    id: generateId(contacts),
+    ...newContactInput,
   };
-  contacts.push(testContact);
+
+  const newContacts = [...contacts, newContact];
+
+  renderContacts(newContacts);
 }
 
-function testDeleteContact() {
-  const testDeleteContact = {
-    name: "Raul Gonzales",
-    email: "gonzalesraul@gmail.com",
-    phone: "0877-7772-7771",
-    company: "Real Madrid Company",
-  };
-  contacts.pop(contacts);
-}
-
-function showMenu() {
-  let choice = prompt(
-    "1. Test Show Contact\n" +
-      "2. Test Add Contact\n" +
-      " 3. Test Delete Contact"
-  );
-
-  switch (choice) {
-    case "1":
-      showContacts();
-      break;
-    case "2":
-      testAddContact();
-      showContacts();
-      break;
-    case "3":
-      testDeleteContact();
-      showContacts();
-  }
-}
-
-showMenu();
+// renderContacts(dataContacts);
+// searchContacts(dataContacts, "Ha");
+// addContact(dataContacts, {
+//   name: "Emma Watson",
+//   email: "Emma@watson.com",
+//   phone: "0871-7711-1111",
+//   company: "Hogwarts Group",
+// });
