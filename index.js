@@ -25,18 +25,21 @@ let dataContacts = [
 const contactsListElement = document.getElementById("contacts-list");
 
 function renderContacts(contacts) {
-  contacts.forEach((contact) => {
-    const contactLiElement = document.createElement("li");
-
-    contactLiElement.innerHTML = `
-    <h1>${contact.name}</h1>
-    <p>${contact.email}</p>
-    <p>${contact.phone}</p>
-    <p>${contact.company}</p>
+  const contactsString = contacts
+    .map((contact) => {
+      return `<li>
+      <div class="p-5 border-2 rounded">
+        <h1>${contact.name}</h1>
+        <p>${contact.email}</p>
+        <p>${contact.phone}</p>
+        <p>${contact.company}</p>
+      </div>
+    </li>
     `;
+    })
+    .join("");
 
-    contactsListElement.appendChild(contactLiElement);
-  });
+  contactsListElement.innerHTML = contactsString;
 }
 
 renderContacts(dataContacts);
