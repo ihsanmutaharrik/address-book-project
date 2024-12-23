@@ -62,6 +62,16 @@ function addContact(contacts, newContactInput) {
   renderContacts(newContacts);
 }
 
+// function deleteContact
+function deleteContact(contacts, contactId) {
+  const filteredContacts = contacts.filter((contact) => {
+    return contact.id !== contactId;
+  });
+
+  dataContacts = filteredContacts;
+  renderContacts(dataContacts);
+}
+
 // renderContacts(dataContacts);
 // searchContacts(dataContacts, "Ha");
 // addContact(dataContacts, {
