@@ -80,3 +80,4 @@ function deleteContact(contacts, contactId) {
 //   phone: "0871-7711-1111",
 //   company: "Hogwarts Group",
 // });
+// deleteContact(dataContacts, 1);
