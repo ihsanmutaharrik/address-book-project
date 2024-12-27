@@ -34,9 +34,7 @@ function renderContacts(contacts) {
           <p>email: ${contact.email}</p>
           <p>phone: ${contact.phone}</p>
           <p>contact: ${contact.company}</p>
-          <button onclick="deleteContacts(${
-            contact.id
-          })" class="bg-red-500 py-0.5 px-1 text-xs rounded-md text-white">Delete</button>
+          <button onclick="deleteContacts(${contact.id})" class="bg-black py-1 px-2 text-xs rounded-md text-white hover:bg-white hover:text-black border border-black">Delete</button>
         </div>
       </li>
       `;
