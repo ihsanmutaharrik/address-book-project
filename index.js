@@ -22,24 +22,39 @@ let dataContacts = [
   },
 ];
 
-const contactsListElement = document.getElementById("contacts-list");
+const contactsListElement = document.getElementById("contact-list");
 
+// Function Render Contacts
 function renderContacts(contacts) {
-  const contactsString = contacts
-    .map((contact) => {
-      return `<li>
-      <div class="p-5 border-2 rounded">
-        <h1>${contact.name}</h1>
-        <p>${contact.email}</p>
-        <p>${contact.phone}</p>
-        <p>${contact.company}</p>
-      </div>
-    </li>
-    `;
-    })
-    .join("");
+  const contactsLiElements = dataContacts.map((contact) => {
+    return `
+      <li>
+        <div class="border border-2 p-4 rounded-md">
+          <h1>${contact.name}</h1>
+          <p>email: ${contact.email}</p>
+          <p>phone: ${contact.phone}</p>
+          <p>contact: ${contact.company}</p>
+          <button onclick="deleteContacts(${
+            contact.id
+          })" class="bg-red-500 py-0.5 px-1 text-xs rounded-md text-white">Delete</button>
+        </div>
+      </li>
+      `;
+  });
 
-  contactsListElement.innerHTML = contactsString;
+  contactsListElement.innerHTML = contactsLiElements.join("");
+}
+
+// Delete Contacts
+
+function deleteContacts(contactId) {
+  const filteredContacts = dataContacts.filter((contact) => {
+    return contact.id !== contactId;
+  });
+
+  dataContacts = filteredContacts;
+
+  renderContacts(dataContacts);
 }
 
 renderContacts(dataContacts);
