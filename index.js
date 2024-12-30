@@ -1,21 +1,21 @@
 let dataContacts = [
   {
     id: 1,
-    name: "Muhammad Haidar Hanif",
+    full_name: "Muhammad Haidar Hanif",
     email: "haidar@bearmentor.com",
     phone: "0881-8881-8881",
     company: "Bearmentor Group",
   },
   {
     id: 2,
-    name: "Isyana Sarasvati",
+    full_name: "Isyana Sarasvati",
     email: "Isyana@gmail.com",
     phone: "0882-8882-8882",
     company: "Redrose Recording",
   },
   {
     id: 3,
-    name: "Raul Gonzales",
+    full_name: "Raul Gonzales",
     email: "gonzalesraul@gmail.com",
     phone: "0877-7772-7771",
     company: "Real Madrid Company",
@@ -24,17 +24,19 @@ let dataContacts = [
 
 const contactsListElement = document.getElementById("contact-list");
 
+const addFormElement = document.getElementById("add-form");
+
 // Function Render Contacts
 function renderContacts(contacts) {
   const contactsLiElements = dataContacts.map((contact) => {
     return `
       <li>
         <div class="border border-2 p-4 rounded-md">
-          <h1>${contact.name}</h1>
+          <h1>${contact.full_name}</h1>
           <p>email: ${contact.email}</p>
           <p>phone: ${contact.phone}</p>
-          <p>contact: ${contact.company}</p>
-          <button onclick="deleteContacts(${contact.id})" class="bg-black py-1 px-2 text-xs rounded-md text-white hover:bg-white hover:text-black border border-black">Delete</button>
+          <p>company: ${contact.company}</p>
+          <button onclick="deleteContacts(${contact.id})" class="bg-red-500 py-1 px-2 text-xs rounded-md text-white hover:bg-red-600 border">Delete</button>
         </div>
       </li>
       `;
@@ -43,8 +45,7 @@ function renderContacts(contacts) {
   contactsListElement.innerHTML = contactsLiElements.join("");
 }
 
-// Delete Contacts
-
+// Function Delete Contacts
 function deleteContacts(contactId) {
   const filteredContacts = dataContacts.filter((contact) => {
     return contact.id !== contactId;
@@ -54,5 +55,43 @@ function deleteContacts(contactId) {
 
   renderContacts(dataContacts);
 }
+
+// Function Generate Contact ID
+function generateId(contacts) {
+  return contacts[contacts.length - 1].id + 1;
+}
+
+// Function Add Contact
+function addContact(contacts, newContactInput) {
+  const newContact = {
+    id: generateId(contacts),
+    full_name: newContactInput.name,
+    email: newContactInput.email,
+    phone: newContactInput.phone,
+    company: newContactInput.company,
+  };
+
+  const newContacts = [...contacts, newContact];
+
+  dataContacts = newContacts;
+
+  renderContacts(dataContacts);
+}
+
+// Get Data from Form Contact
+addFormElement.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const addFormData = new FormData(addFormElement);
+
+  const ContactData = {
+    name: addFormData.get("full-name"),
+    email: addFormData.get("email"),
+    phone: addFormData.get("phone"),
+    company: addFormData.get("company")
+  };
+
+  addContact(dataContacts, ContactData);
+});
 
 renderContacts(dataContacts);

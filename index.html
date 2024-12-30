@@ -12,6 +12,58 @@
       <h1>Dcontact</h1>
     </a>
 
+    <!-- Add New Contact Start  -->
+    <form method="post" id="add-form" class="p-10">
+      <div>
+        <label for="full-name">Full Name: </label>
+        <input
+          id="name"
+          type="text"
+          name="full-name"
+          placeholder="Your Full Name"
+          class="px-1 py-1 border"
+        />
+      </div>
+      <div>
+        <label for="email">Email: </label>
+        <input
+          id="email"
+          type="text"
+          name="email"
+          placeholder="your@email.com"
+          class="px-1 py-1 border"
+        />
+      </div>
+      <div>
+        <label for="phone">phone: </label>
+        <input
+          id="phone"
+          type="text"
+          name="phone"
+          placeholder="+621234567890"
+          class="px-1 py-1 border"
+        />
+      </div>
+      <div>
+        <label for="company">company: </label>
+        <input
+          id="company"
+          type="text"
+          name="company"
+          placeholder="Your Company Inc"
+          class="px-1 py-1 border"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="bg-black border hover:bg-gray-600 text-white text-xs rounded px-2 py-1 border font-bold"
+      >
+        Add Contact
+      </button>
+    </form>
+    <!-- Add New Contact End -->
+
     <!-- Render Contact Start -->
     <container class="p-4">
       <ul id="contact-list" class="space-y-4">
