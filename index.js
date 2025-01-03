@@ -1,21 +1,21 @@
 let dataContacts = [
   {
     id: 1,
-    full_name: "Muhammad Haidar Hanif",
+    fullName: "Muhammad Haidar Hanif",
     email: "haidar@bearmentor.com",
     phone: "0881-8881-8881",
     company: "Bearmentor Group",
   },
   {
     id: 2,
-    full_name: "Isyana Sarasvati",
+    fullName: "Isyana Sarasvati",
     email: "Isyana@gmail.com",
     phone: "0882-8882-8882",
     company: "Redrose Recording",
   },
   {
     id: 3,
-    full_name: "Raul Gonzales",
+    fullName: "Raul Gonzales",
     email: "gonzalesraul@gmail.com",
     phone: "0877-7772-7771",
     company: "Real Madrid Company",
@@ -28,18 +28,18 @@ const addFormElement = document.getElementById("add-form");
 
 // Function Render Contacts
 function renderContacts(contacts) {
-  const urlParams = new URLSearchParams(window.location.search);
-  const searchQuery = urlParams.get('q');
+  const urlParams = new URLSearchParams(location.search);
+  const searchQuery = urlParams.get("q");
 
-  const ContactsToDisplay = searchQuery
+  const contactsToDisplay = searchQuery
     ? searchContacts(contacts, searchQuery)
     : contacts;
 
-  const contactsLiElements = ContactsToDisplay.map((contact) => {
+  const contactsLiElements = contactsToDisplay.map((contact) => {
     return `
       <li>
         <div class="border border-2 p-4 rounded-md">
-          <h1>${contact.full_name}</h1>
+          <h1>${contact.fullName}</h1>
           <p>email: ${contact.email}</p>
           <p>phone: ${contact.phone}</p>
           <p>company: ${contact.company}</p>
@@ -71,7 +71,13 @@ function generateId(contacts) {
 // Function Search Contact
 function searchContacts(contacts, searchQuery) {
   const searchedContacts = contacts.filter((contact) => {
-    return contact.full_name.toLowerCase().includes(searchQuery.toLowerCase());
+    const isFound =
+      contact.fullName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      contact.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      contact.phone.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      contact.company.toLowerCase().includes(searchQuery.toLowerCase());
+
+    return isFound;
   });
 
   if (searchedContacts.length <= 0) {
@@ -86,7 +92,7 @@ function searchContacts(contacts, searchQuery) {
 function addContact(contacts, newContactInput) {
   const newContact = {
     id: generateId(contacts),
-    full_name: newContactInput.name,
+    fullName: newContactInput.name,
     email: newContactInput.email,
     phone: newContactInput.phone,
     company: newContactInput.company,
@@ -97,6 +103,24 @@ function addContact(contacts, newContactInput) {
   dataContacts = newContacts;
 
   renderContacts(dataContacts);
+}
+
+function getContactById(contacts, contactId) {
+  return contacts.find((contact) => {
+    return contact.id === contactId;
+  });
+}
+
+function updateContact(contacts, updatedContact) {
+  const updatedContacts = contacts.map((contact) => {
+    if (contact.id === updatedContact.id) {
+      return updatedContact;
+    }
+
+    return contact;
+  });
+
+  dataContacts = updatedContacts;
 }
 
 // Get Data from Form Contact
