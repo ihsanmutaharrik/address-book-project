@@ -12,7 +12,25 @@
       <h1>Dcontact</h1>
     </a>
 
-    <!-- Add New Contact Start  -->
+    <!-- Search Contact Start -->
+    <form method="get">
+      <input
+        type="search"
+        class="border"
+        placeholder="Search Contact..."
+        name="q"
+      />
+      <button
+        type="submit"
+        class="bg-black border hover:bg-gray-600 text-white text-xs rounded px-2 py-1 border font-bold"
+      >
+        Go
+      </button>
+    </form>
+
+    <!-- Search Contact End -->
+
+    <!-- Add New Contact Form Start  -->
     <form method="post" id="add-form" class="p-10">
       <div>
         <label for="full-name">Full Name: </label>
@@ -57,12 +75,12 @@
 
       <button
         type="submit"
-        class="bg-black border hover:bg-gray-600 text-white text-xs rounded px-2 py-1 border font-bold"
+        class="mt-5 bg-black border hover:bg-gray-600 text-white text-xs rounded px-2 py-1 border font-bold"
       >
         Add Contact
       </button>
     </form>
-    <!-- Add New Contact End -->
+    <!-- Add New Contact Form End -->
 
     <!-- Render Contact Start -->
     <container class="p-4">

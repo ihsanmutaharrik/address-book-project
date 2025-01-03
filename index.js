@@ -28,7 +28,14 @@ const addFormElement = document.getElementById("add-form");
 
 // Function Render Contacts
 function renderContacts(contacts) {
-  const contactsLiElements = dataContacts.map((contact) => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const searchQuery = urlParams.get('q');
+
+  const ContactsToDisplay = searchQuery
+    ? searchContacts(contacts, searchQuery)
+    : contacts;
+
+  const contactsLiElements = ContactsToDisplay.map((contact) => {
     return `
       <li>
         <div class="border border-2 p-4 rounded-md">
@@ -61,6 +68,20 @@ function generateId(contacts) {
   return contacts[contacts.length - 1].id + 1;
 }
 
+// Function Search Contact
+function searchContacts(contacts, searchQuery) {
+  const searchedContacts = contacts.filter((contact) => {
+    return contact.full_name.toLowerCase().includes(searchQuery.toLowerCase());
+  });
+
+  if (searchedContacts.length <= 0) {
+    console.log("No contacts found");
+    return [];
+  }
+
+  return searchedContacts;
+}
+
 // Function Add Contact
 function addContact(contacts, newContactInput) {
   const newContact = {
@@ -88,7 +109,7 @@ addFormElement.addEventListener("submit", function (event) {
     name: addFormData.get("full-name"),
     email: addFormData.get("email"),
     phone: addFormData.get("phone"),
-    company: addFormData.get("company")
+    company: addFormData.get("company"),
   };
 
   addContact(dataContacts, ContactData);
